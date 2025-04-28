@@ -1,0 +1,790 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #004080;
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+}
+
+section {
+    padding: 40px 0;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #0066cc;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* 头部样式 */
+header {
+    background-color: #0066cc;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+header .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+}
+
+/* 个人资料部分 */
+.hero {
+    background-color: white;
+    padding: 40px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 头像样式 */
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.profile-image {
+    flex: 0 0 200px;
+}
+
+.avatar {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 3px solid #0066cc;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-image {
+        margin-bottom: 20px;
+        max-width: 200px;
+    }
+}
+
+.profile-info p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.contact-info {
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #0066cc;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-info i {
+    width: 20px;
+    color: #0066cc;
+    margin-right: 10px;
+}
+
+/* 教育背景部分 */
+.education {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.education-item {
+    display: flex;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.education-item:last-child {
+    border-bottom: none;
+}
+
+.edu-date {
+    flex: 0 0 200px;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.edu-content {
+    flex: 1;
+}
+
+.institution {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.edu-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.edu-content li {
+    margin-bottom: 5px;
+}
+
+/* 技能部分 */
+.skills {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.skill-category {
+    flex: 1;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* 添加竖线分隔 */
+.skill-category:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: #ddd;
+}
+
+.skill-category h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0066cc;
+}
+
+.skill-category ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.skill-category li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* 软件图标样式 */
+.software-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.software-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.software-icon i {
+    font-size: 2rem;
+    color: #0066cc;
+    margin-bottom: 8px;
+}
+
+.software-icon span {
+    font-size: 0.8rem;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column;
+    }
+    
+    .skill-category {
+        margin-bottom: 30px;
+    }
+    
+    .skill-category:not(:last-child)::after {
+        display: none;
+    }
+    
+    .skill-category:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 10%;
+        width: 80%;
+        height: 1px;
+        background-color: #ddd;
+    }
+}
+
+/* 学术服务部分 */
+.academic-services {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.academic-services ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.academic-services li {
+    margin-bottom: 10px;
+}
+
+/* 发表论文部分 */
+.publication-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.publication-item:last-child {
+    border-bottom: none;
+}
+
+.publication-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.publication-authors {
+    margin-bottom: 5px;
+    font-style: normal; /* 明确设置为正常字体样式，覆盖可能的斜体 */
+}
+
+.publication-journal {
+    color: #666;
+}
+
+.publication-link {
+    margin-top: 8px;
+}
+
+/* 研究项目部分 */
+.project-item {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+/* 项目标题和日期布局调整 */
+.project-header {
+    display: flex;
+    flex-direction: column; /* 改为纵向排列 */
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 8px; /* 增加与日期的间距 */
+    color: #333;
+    max-width: 85%; /* 限制标题宽度，避免与日期重叠 */
+}
+
+.project-date {
+    color: #0066cc;
+    font-style: italic;
+    align-self: flex-end; /* 日期靠右对齐 */
+    margin-top: -30px; /* 向上移动，使其与标题在同一高度但不重叠 */
+}
+
+/* 响应式设计调整 */
+@media (max-width: 768px) {
+    .project-date {
+        margin-top: 0; /* 在移动设备上取消负边距 */
+        align-self: flex-start; /* 在移动设备上靠左对齐 */
+    }
+}
+
+.project-details {
+    margin-top: 15px;
+}
+
+.project-details h4 {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.project-details p, .project-details ul {
+    margin-bottom: 15px;
+}
+
+.project-details ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* 奖项荣誉部分 */
+.awards-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.award-item {
+    flex: 0 0 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border-left: 4px solid #0066cc;
+}
+
+.award-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.award-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 页脚样式 */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .education-item, .profile-container {
+        flex-direction: column;
+    }
+    
+    .edu-date {
+        margin-bottom: 10px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+    }
+    
+    nav ul li {
+        margin-bottom: 10px;
+    }
+    
+    .skills-container {
+        flex-direction: column;
+    }
+}
+
+/* 项目样式 */
+.project-item {
+    display: flex;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.project-image {
+    flex: 0 0 250px;
+    margin-right: 30px;
+}
+
+.project-thumbnail {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.project-content {
+    flex: 1;
+}
+
+.project-header {
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.project-date {
+    color: #666;
+    font-style: italic;
+}
+
+.project-details h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+/* 论文样式 */
+/* 出版物和专利操作按钮样式 */
+.publication-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.action-link, .action-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.action-link:hover, .action-download:hover {
+    color: #004d99;
+    transform: translateY(-2px);
+}
+
+.action-link i, .action-download i {
+    font-size: 1.2rem;
+}
+
+/* 出版物项目样式调整 */
+.publication-item {
+    display: flex;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.publication-image {
+    flex: 0 0 350px; /* 增加图片容器宽度，从250px增加到350px */
+    margin-right: 20px;
+}
+
+.publication-thumbnail {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.publication-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.publication-content {
+    flex: 1;
+    max-width: 100%; /* 修改这里，从60%改为100%，不限制文字部分的最大宽度 */
+}
+
+.publication-title-cn {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    width: 100%; /* 确保宽度一致 */
+    white-space: normal; /* 修改这里，允许文本换行 */
+    overflow: visible; /* 修改这里，显示所有内容 */
+    text-overflow: clip; /* 修改这里，不使用省略号 */
+    line-height: 1.4; /* 保持行高一致 */
+}
+
+.publication-title-cn {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    width: 100%; /* 确保宽度一致 */
+    max-width: 800px; /* 增加中文标题的最大宽度，使其尽可能一行显示 */
+    white-space: nowrap; /* 尝试保持在一行 */
+    overflow: hidden; /* 如果内容溢出，隐藏溢出部分 */
+    text-overflow: ellipsis; /* 在溢出时显示省略号 */
+}
+
+/* 在较小屏幕上取消单行限制 */
+@media (max-width: 768px) {
+    .publication-title-cn {
+        white-space: normal; /* 在小屏幕上允许换行 */
+        overflow: visible;
+        text-overflow: clip;
+    }
+}
+
+/* 移除之前可能存在的不同样式 */
+/* 如果您之前添加了publication-title-cn的样式，请删除或替换为上面的统一样式 */
+.publication-authors {
+    margin-bottom: 5px;
+}
+
+.publication-journal {
+    font-style: italic;
+    color: #666;
+}
+
+.publication-link a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.publication-link a:hover {
+    text-decoration: underline;
+}
+
+/* 奖项样式 */
+.award-item {
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.award-image {
+    flex: 0 0 150px;
+    margin-right: 30px;
+}
+
+.award-thumbnail {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.award-thumbnail:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.award-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.award-title {
+    font-size: 1.1em;
+    font-weight: normal;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.award-date {
+    color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .project-item,
+    .publication-item,
+    .award-item {
+        flex-direction: column;
+    }
+    
+    .project-image,
+    .publication-image,
+    .award-image {
+        flex: 0 0 auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+        max-width: 100%;
+    }
+}
+
+/* 学术资料链接样式 */
+.academic-profiles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px 0;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.profile-link {
+    color: #0066cc;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.profile-link:hover {
+    text-decoration: underline;
+}
+
+.profile-link i {
+    margin-right: 5px;
+    color: #0066cc;
+}
+
+.profile-divider {
+    color: #ddd;
+    font-weight: 300;
+    margin: 0 10px;
+}
+
+/* 响应式设计调整 */
+@media (max-width: 576px) {
+    .academic-profiles {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .profile-divider {
+        display: none;
+    }
+}
+
+/* 简历下载按钮容器样式 */
+.cv-download {
+    margin-top: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+/* 简历下载按钮样式 */
+.cv-button {
+    display: inline-block;
+    width: 100%;
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.cv-button:hover {
+    background-color: #004d99;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: white;
+}
+
+.cv-button i {
+    margin-right: 8px;
+}
+/* 奖项链接样式 */
+.award-link {
+    margin-top: 10px;
+}
+
+.award-link a {
+    display: inline-flex;
+    align-items: center;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.award-link a:hover {
+    color: #004d99;
+    text-decoration: underline;
+}
+
+.award-link i {
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
