@@ -1,4 +1,4 @@
-/* 基础样式 */
+/* 基础样式 - 极简清新风格 */
 * {
     margin: 0;
     padding: 0;
@@ -6,28 +6,28 @@
 }
 
 body {
-    font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
-    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Microsoft YaHei', 'SimHei';
+    line-height: 1.8;
     color: #333;
-    background-color: #f8f9fa;
+    background: #fafbfc;
+    font-size: 16px;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
 
 a {
-    color: #0066cc;
+    color: #3b82f6;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
 }
 
 a:hover {
-    color: #004080;
-    text-decoration: underline;
+    color: #2563eb;
 }
 
 ul {
@@ -35,77 +35,102 @@ ul {
 }
 
 section {
-    padding: 40px 0;
+    padding: 25px 0;
 }
 
 h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
-    border-bottom: 2px solid #0066cc;
+    color: #1f2937;
+    font-weight: 600;
+    position: relative;
     padding-bottom: 10px;
 }
 
-h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #444;
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: #3b82f6;
+    border-radius: 1px;
 }
 
-/* 头部样式 */
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #374151;
+    font-weight: 400;
+}
+
+/* 头部样式 - 极简设计 */
 header {
-    background-color: #0066cc;
-    color: white;
-    padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    color: #1f2937;
+    padding: 30px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e5e7eb;
 }
 
 header h1 {
     font-size: 2.5rem;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    color: #1f2937;
+}
+
+/* Chinese name in Song/Kai font */
+header h1 .chinese-name {
+    font-family: "STSong", "SimSun", "Songti SC", "KaiTi", serif;
+    font-weight: 700;
 }
 
 header .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    color: #6b7280;
+    font-weight: 300;
 }
 
 nav ul {
     display: flex;
     flex-wrap: wrap;
-}
-
-nav ul li {
-    margin-right: 20px;
+    gap: 8px;
 }
 
 nav ul li a {
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    color: #6b7280;
+    font-weight: 400;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: #f3f4f6;
 }
 
 nav ul li a:hover, nav ul li a.active {
-    background-color: rgba(255, 255, 255, 0.2);
-    text-decoration: none;
+    background: #3b82f6;
+    color: white;
 }
 
-/* 个人资料部分 */
+/* 个人资料部分 - 清新卡片式 */
 .hero {
-    background-color: white;
-    padding: 40px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: white;
+    padding: 30px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 10;
 }
 
-/* 头像样式 */
 .profile-container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 30px;
+    gap: 40px;
 }
 
 .profile-image {
@@ -115,374 +140,519 @@ nav ul li a:hover, nav ul li a.active {
 .avatar {
     width: 100%;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 3px solid #0066cc;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    border: 3px solid #f3f4f6;
+    transition: all 0.3s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.15);
 }
 
 .profile-info {
     flex: 1;
 }
 
-/* 响应式设计调整 */
-@media (max-width: 768px) {
+.profile-info h2 {
+    margin-top: 0;
+}
+
+.profile-info p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4b5563;
+}
+
+.contact-info {
+    margin-top: 20px;
+    background: #f9fafb;
+    padding: 16px 18px;
+    border-radius: 8px;
+    border-left: 3px solid #3b82f6;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.contact-info p:last-of-type {
+    margin-bottom: 0;
+}
+
+.contact-info i {
+    width: 20px;
+    color: #3b82f6;
+    margin-right: 12px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* 侧边栏样式 - 静态嵌入布局 */
+.sidebar {
+    position: static;
+    width: 240px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    padding: 20px;
+}
+
+.sidebar h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #1f2937;
+    font-weight: 500;
+    text-align: center;
+}
+
+.sidebar h3 i {
+    color: #3b82f6;
+    margin-right: 6px;
+}
+
+.scholar-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+.last-updated {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.scholar-link {
+    display: block;
+    margin-top: 12px;
+    padding: 8px 0;
+    color: #3b82f6;
+    font-size: 0.85rem;
+    text-align: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.scholar-link:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.scholar-link i {
+    margin-right: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
     .profile-container {
         flex-direction: column;
         align-items: center;
     }
     
-    .profile-image {
-        margin-bottom: 20px;
-        max-width: 200px;
+    .sidebar {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 20px;
     }
 }
 
-.profile-info p {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
+@media (max-width: 768px) {
+    .profile-image {
+        margin-bottom: 20px;
+        max-width: 180px;
+    }
 }
 
-.contact-info {
-    margin-top: 20px;
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 5px;
-    border-left: 4px solid #0066cc;
-}
-
-.contact-info p {
-    margin-bottom: 10px;
-}
-
-.contact-info i {
-    width: 20px;
-    color: #0066cc;
-    margin-right: 10px;
-}
-
-/* 教育背景部分 */
+/* 教育背景部分 - 时间轴风格 */
 .education {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 }
 
+/* Education - Modern Card Design */
 .education-item {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
     display: flex;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #3b82f6;
 }
 
 .education-item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.education-item::before {
+    display: none;
 }
 
 .edu-date {
-    flex: 0 0 200px;
-    font-weight: bold;
-    color: #0066cc;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    margin-left: 20px;
+    white-space: nowrap;
 }
 
 .edu-content {
     flex: 1;
 }
 
-.institution {
-    font-style: italic;
+.edu-content h3 {
+    color: #1f2937;
+    font-size: 1.25rem;
+    font-weight: 600;
     margin-bottom: 10px;
-    color: #666;
+    line-height: 1.4;
+}
+
+.institution {
+    font-style: normal;
+    margin-bottom: 18px;
+    color: #6b7280;
+    font-weight: 400;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.institution::before {
+    content: '\f19c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    color: #9ca3af;
+    font-size: 0.9rem;
 }
 
 .edu-content ul {
-    list-style-type: disc;
-    margin-left: 20px;
+    list-style-type: none;
+    margin-left: 0;
+    background: #f9fafb;
+    padding: 15px 18px;
+    border-radius: 8px;
+    border-left: 3px solid #3b82f6;
 }
 
 .edu-content li {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    padding-left: 22px;
+    position: relative;
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
-/* 技能部分 */
+.edu-content li:last-child {
+    margin-bottom: 0;
+}
+
+.edu-content li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-size: 0.75rem;
+}
+
+/* 技能部分 - 卡片式布局 */
 .skills {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 }
 
+/* Skills - Modern Tag Design */
 .skills-container {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .skill-category {
-    flex: 1;
-    padding: 0 20px;
-    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
 }
 
-/* 添加竖线分隔 */
-.skill-category:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 10%;
-    height: 80%;
-    width: 1px;
-    background-color: #ddd;
+.skill-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #3b82f6;
 }
 
 .skill-category h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #0066cc;
-}
-
-.skill-category ul {
-    list-style-type: none;
-    margin-left: 0;
-    padding-left: 0;
-}
-
-.skill-category li {
-    margin-bottom: 15px;
+    color: #1f2937;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f3f4f6;
     display: flex;
     align-items: center;
 }
 
-/* 软件图标样式 */
+.skill-category h3::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
 .software-icons {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .software-icon {
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    width: 80px;
-    text-align: center;
-    margin-bottom: 15px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 8px 14px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.software-icon:hover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
 
 .software-icon i {
-    font-size: 2rem;
-    color: #0066cc;
-    margin-bottom: 8px;
+    font-size: 1.2rem;
+    color: #3b82f6;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.software-icon:hover i {
+    transform: scale(1.1);
+    color: #2563eb;
 }
 
 .software-icon span {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: #4b5563;
+    font-weight: 500;
 }
 
-/* 响应式设计调整 */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .skills-container {
-        flex-direction: column;
+        gap: 20px;
     }
     
     .skill-category {
-        margin-bottom: 30px;
-    }
-    
-    .skill-category:not(:last-child)::after {
-        display: none;
-    }
-    
-    .skill-category:not(:last-child)::before {
-        content: "";
-        position: absolute;
-        bottom: -15px;
-        left: 10%;
-        width: 80%;
-        height: 1px;
-        background-color: #ddd;
+        padding: 20px;
     }
 }
 
 /* 学术服务部分 */
 .academic-services {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 }
 
 .academic-services ul {
-    list-style-type: disc;
-    margin-left: 20px;
+    list-style-type: none;
+    margin-left: 0;
+    counter-reset: service-counter;
 }
 
 .academic-services li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-left: 32px;
+    position: relative;
+    color: #4b5563;
+    line-height: 1.8;
+    counter-increment: service-counter;
+}
+
+.academic-services li::before {
+    content: counter(service-counter) ".";
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
 /* 发表论文部分 */
 .publication-item {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    display: flex;
+    margin-bottom: 30px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f6;
+    transition: all 0.3s ease;
 }
 
-.publication-item:last-child {
-    border-bottom: none;
+.publication-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #e5e7eb;
 }
 
-.publication-title {
-    font-weight: bold;
-    margin-bottom: 8px;
+.publication-image {
+    flex: 0 0 300px;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.publication-thumbnail {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.publication-content {
+    flex: 1;
+}
+
+.publication-title,
+.publication-title-cn {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #1f2937;
+    line-height: 1.6;
 }
 
 .publication-authors {
-    margin-bottom: 5px;
-    font-style: normal; /* 明确设置为正常字体样式，覆盖可能的斜体 */
+    margin-bottom: 8px;
+    color: #4b5563;
 }
 
 .publication-journal {
-    color: #666;
+    color: #9ca3af;
+    font-style: normal;
+    font-size: 0.95rem;
 }
 
-.publication-link {
-    margin-top: 8px;
+.publication-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.action-link, .action-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #3b82f6;
+    color: white;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 44px;
+    height: 38px;
+}
+
+.action-link:hover, .action-download:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.25);
+    color: white;
+}
+
+.action-link i, .action-download i {
+    margin: 0;
+    font-size: 1.1rem;
 }
 
 /* 研究项目部分 */
 .project-item {
-    margin-bottom: 30px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid #eee;
-}
-
-.project-item:last-child {
-    border-bottom: none;
-}
-
-/* 项目标题和日期布局调整 */
-.project-header {
-    display: flex;
-    flex-direction: column; /* 改为纵向排列 */
-    margin-bottom: 15px;
-}
-
-.project-title {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-bottom: 8px; /* 增加与日期的间距 */
-    color: #333;
-    max-width: 85%; /* 限制标题宽度，避免与日期重叠 */
-}
-
-.project-date {
-    color: #0066cc;
-    font-style: italic;
-    align-self: flex-end; /* 日期靠右对齐 */
-    margin-top: -30px; /* 向上移动，使其与标题在同一高度但不重叠 */
-}
-
-/* 响应式设计调整 */
-@media (max-width: 768px) {
-    .project-date {
-        margin-top: 0; /* 在移动设备上取消负边距 */
-        align-self: flex-start; /* 在移动设备上靠左对齐 */
-    }
-}
-
-.project-details {
-    margin-top: 15px;
-}
-
-.project-details h4 {
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.project-details p, .project-details ul {
-    margin-bottom: 15px;
-}
-
-.project-details ul {
-    list-style-type: disc;
-    margin-left: 20px;
-}
-
-/* 奖项荣誉部分 */
-.awards-list {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.award-item {
-    flex: 0 0 100%;
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    border-left: 4px solid #0066cc;
-}
-
-.award-title {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.award-date {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* 页脚样式 */
-footer {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .education-item, .profile-container {
-        flex-direction: column;
-    }
-    
-    .edu-date {
-        margin-bottom: 10px;
-    }
-    
-    nav ul {
-        flex-direction: column;
-    }
-    
-    nav ul li {
-        margin-bottom: 10px;
-    }
-    
-    .skills-container {
-        flex-direction: column;
-    }
-}
-
-/* 项目样式 */
-.project-item {
     display: flex;
     margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #eee;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f6;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #e5e7eb;
 }
 
 .project-image {
     flex: 0 0 250px;
-    margin-right: 30px;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
 }
 
 .project-thumbnail {
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.project-thumbnail:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .project-content {
@@ -494,157 +664,73 @@ footer {
 }
 
 .project-title {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #1f2937;
 }
 
 .project-date {
-    color: #666;
-    font-style: italic;
+    color: #3b82f6;
+    font-style: normal;
+    font-size: 0.9rem;
 }
 
 .project-details h4 {
     margin-top: 15px;
-    margin-bottom: 5px;
-    color: #444;
+    margin-bottom: 8px;
+    color: #374151;
+    font-weight: 500;
 }
 
-/* 论文样式 */
-/* 出版物和专利操作按钮样式 */
-.publication-actions {
-    margin-top: 10px;
+.project-details ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.project-details li {
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+    color: #4b5563;
+}
+
+.project-details li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+}
+
+/* 奖项荣誉部分 */
+.award-item {
     display: flex;
-    gap: 15px;
-}
-
-.action-link, .action-download {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #0066cc;
-    text-decoration: none;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f6;
     transition: all 0.3s ease;
 }
 
-.action-link:hover, .action-download:hover {
-    color: #004d99;
+.award-item:hover {
     transform: translateY(-2px);
-}
-
-.action-link i, .action-download i {
-    font-size: 1.2rem;
-}
-
-/* 出版物项目样式调整 */
-.publication-item {
-    display: flex;
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    align-items: center;
-}
-
-.publication-image {
-    flex: 0 0 350px; /* 增加图片容器宽度，从250px增加到350px */
-    margin-right: 20px;
-}
-
-.publication-thumbnail {
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.publication-thumbnail:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.publication-content {
-    flex: 1;
-    max-width: 100%; /* 修改这里，从60%改为100%，不限制文字部分的最大宽度 */
-}
-
-.publication-title-cn {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-    width: 100%; /* 确保宽度一致 */
-    white-space: normal; /* 修改这里，允许文本换行 */
-    overflow: visible; /* 修改这里，显示所有内容 */
-    text-overflow: clip; /* 修改这里，不使用省略号 */
-    line-height: 1.4; /* 保持行高一致 */
-}
-
-.publication-title-cn {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-    width: 100%; /* 确保宽度一致 */
-    max-width: 800px; /* 增加中文标题的最大宽度，使其尽可能一行显示 */
-    white-space: nowrap; /* 尝试保持在一行 */
-    overflow: hidden; /* 如果内容溢出，隐藏溢出部分 */
-    text-overflow: ellipsis; /* 在溢出时显示省略号 */
-}
-
-/* 在较小屏幕上取消单行限制 */
-@media (max-width: 768px) {
-    .publication-title-cn {
-        white-space: normal; /* 在小屏幕上允许换行 */
-        overflow: visible;
-        text-overflow: clip;
-    }
-}
-
-/* 移除之前可能存在的不同样式 */
-/* 如果您之前添加了publication-title-cn的样式，请删除或替换为上面的统一样式 */
-.publication-authors {
-    margin-bottom: 5px;
-}
-
-.publication-journal {
-    font-style: italic;
-    color: #666;
-}
-
-.publication-link a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-.publication-link a:hover {
-    text-decoration: underline;
-}
-
-/* 奖项样式 */
-.award-item {
-    display: flex;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #e5e7eb;
 }
 
 .award-image {
     flex: 0 0 150px;
-    margin-right: 30px;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
 }
 
 .award-thumbnail {
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.award-thumbnail:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .award-content {
@@ -655,22 +741,160 @@ footer {
 }
 
 .award-title {
-    font-size: 1.1em;
-    font-weight: normal;
-    margin-bottom: 5px;
-    color: #333;
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #1f2937;
 }
 
 .award-date {
-    color: #666;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+.award-link a {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+    color: #3b82f6;
+    font-size: 0.9rem;
+}
+
+.award-link a:hover {
+    color: #2563eb;
+}
+
+/* 学术资料链接样式 */
+.academic-profiles {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 12px;
+    padding: 12px 8px;
+    background: transparent;
+    border-radius: 0;
+    gap: 8px;
+}
+
+.profile-link {
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    padding: 4px 8px;
+    white-space: nowrap;
+}
+
+.profile-link:hover {
+    color: #2563eb;
+}
+
+.profile-link i {
+    margin-right: 6px;
+    font-size: 1rem;
+}
+
+.profile-divider {
+    color: #d1d5db;
+    margin: 0 4px;
+    font-weight: 300;
+}
+
+/* 简历下载按钮 */
+.cv-download {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.cv-button {
+    display: inline-block;
+    width: 100%;
+    background: #3b82f6;
+    color: white;
+    padding: 11px 0;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(59, 130, 246, 0.2);
+}
+
+.cv-button:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+    color: white;
+}
+
+.cv-button i {
+    margin-right: 8px;
+}
+
+/* 访客地图容器 */
+.visitor-map {
+    margin-top: 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.visitor-map h3 {
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.visitor-map h3 i {
+    color: #3b82f6;
+    margin-right: 6px;
+}
+
+/* 页脚样式 */
+footer {
+    background: #1f2937;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer p {
+    font-weight: 300;
+    opacity: 0.9;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    .profile-container,
     .project-item,
     .publication-item,
     .award-item {
         flex-direction: column;
+    }
+    
+    .education-item {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .edu-date {
+        margin-left: 0;
+        margin-top: 15px;
+        font-size: 0.8rem;
+        align-self: flex-start;
+    }
+    
+    .education-item::before {
+        display: none;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
     }
     
     .project-image,
@@ -681,46 +905,7 @@ footer {
         margin-bottom: 15px;
         max-width: 100%;
     }
-}
-
-/* 学术资料链接样式 */
-.academic-profiles {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px 0;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.profile-link {
-    color: #0066cc;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-}
-
-.profile-link:hover {
-    text-decoration: underline;
-}
-
-.profile-link i {
-    margin-right: 5px;
-    color: #0066cc;
-}
-
-.profile-divider {
-    color: #ddd;
-    font-weight: 300;
-    margin: 0 10px;
-}
-
-/* 响应式设计调整 */
-@media (max-width: 576px) {
+    
     .academic-profiles {
         flex-direction: column;
         gap: 10px;
@@ -729,62 +914,221 @@ footer {
     .profile-divider {
         display: none;
     }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
 }
 
-/* 简历下载按钮容器样式 */
-.cv-download {
-    margin-top: 15px;
-    text-align: center;
-    width: 100%;
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
 }
 
-/* 简历下载按钮样式 */
-.cv-button {
-    display: inline-block;
-    width: 100%;
-    background-color: #0066cc;
-    color: white;
-    padding: 10px 0;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
+/* 加载动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.cv-button:hover {
-    background-color: #004d99;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    color: white;
+section {
+    animation: fadeIn 0.5s ease-out;
 }
 
-.cv-button i {
-    margin-right: 8px;
+/* ========== News Section ========== */
+.news-section {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
 }
-/* 奖项链接样式 */
-.award-link {
+
+.news-page {
+    min-height: calc(100vh - 200px);
+    padding: 40px 0;
+}
+
+.page-intro {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
     margin-top: 10px;
 }
 
-.award-link a {
+.news-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px);
+}
+
+.news-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.05);
+}
+
+.news-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #3b82f6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.news-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.news-excerpt {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.news-date {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-card {
+        margin-bottom: 15px;
+    }
+    
+    .news-image {
+        height: 180px;
+    }
+    
+    .news-content {
+        padding: 15px;
+    }
+    
+    .news-title {
+        font-size: 1rem;
+    }
+}
+
+/* Publication Type Label */
+.publication-type {
     display: inline-flex;
     align-items: center;
-    color: #0066cc;
-    text-decoration: none;
+    background-color: #3b82f6;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    height: 38px;
+    transition: all 0.3s ease;
+}
+
+.publication-type:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Project Details - Definition List Style */
+.project-details {
+    margin-top: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.project-details dt {
+    color: #1f2937;
     font-size: 0.9rem;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    letter-spacing: 0.2px;
 }
 
-.award-link a:hover {
-    color: #004d99;
-    text-decoration: underline;
+.project-details dt:first-child {
+    margin-top: 0;
 }
 
-.award-link i {
-    margin-right: 5px;
-    font-size: 0.8rem;
+.project-details dd {
+    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-left: 0;
+    margin-bottom: 0;
 }
 
+/* Remove old styles */
+.project-info-item {
+    display: none;
+}
+
+.project-label {
+    display: none;
+}
+
+.project-details h4 {
+    display: none;
+}
