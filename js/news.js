@@ -31,7 +31,7 @@ class NewsManager {
     // 加载所有新闻文件
     async loadNews() {
         const newsFiles = [
-            '2025-06-17-Scholarship.md',
+            'news/2025-06-17-Scholarship.md',
         ];
 
         for (const file of newsFiles) {
