@@ -56,7 +56,14 @@ function loadScholarData() {
             const lastUpdatedEl = document.getElementById('last-updated');
             if (lastUpdatedEl && data.last_updated) {
                 const updateDate = new Date(data.last_updated);
-                lastUpdatedEl.textContent = `Last updated: ${updateDate.toLocaleDateString()}`;
+                const options = { 
+                    year: 'numeric', 
+                    month: '2-digit', 
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                };
+                lastUpdatedEl.textContent = `Last updated: ${updateDate.toLocaleDateString('en-CA', options).replace(',', '')}`;
             }
         })
         .catch(error => {
