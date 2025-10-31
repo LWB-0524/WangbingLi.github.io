@@ -1,53 +1,41 @@
-// News管理系统 - 从Markdown文件加载和显示新闻
+// News管理系统 - 静态新闻数据（兼容GitHub Pages）
 
 class NewsManager {
     constructor() {
-        this.newsItems = [];
-    }
+        // 直接在JavaScript中定义新闻数据，避免CORS问题
+        this.newsItems = [
+            {
+                date: '2025-06-17',
+                category: 'Scholarship',
+                title: 'Securing CSC Scholarship for Doctoral Studies at University of Auckland',
+                image: 'images/news/CSCScholarship.jpg',
+                content: `I am delighted to announce that I have been awarded the prestigious joint scholarship from the **China Scholarship Council (CSC)** and **the University of Auckland** in New Zealand to pursue my doctoral degree. This scholarship represents a significant opportunity for academic advancement and international collaboration.
 
-    // 解析Markdown文件的frontmatter
-    parseFrontmatter(content) {
-        const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-        const match = content.match(frontmatterRegex);
-        
-        if (!match) return null;
-        
-        const frontmatter = {};
-        const lines = match[1].split('\n');
-        
-        lines.forEach(line => {
-            const colonIndex = line.indexOf(':');
-            if (colonIndex > 0) {
-                const key = line.substring(0, colonIndex).trim();
-                const value = line.substring(colonIndex + 1).trim();
-                frontmatter[key] = value;
+Under the scholarship's terms, my doctoral studies at the University of Auckland will be comprehensively supported. The University of Auckland will provide **full tuition coverage** for up to 48 months, while CSC will offer **a round-trip international airfare** and **a monthly living allowance** throughout the funding period, enabling me to focus entirely on my research and studies.
+
+The University of Auckland is New Zealand's leading higher education institution, consistently recognized for its academic excellence and research impact. It holds the **65th** position in the **2025 QS World University Rankings**, maintaining its status as the top-ranked university in New Zealand.
+
+This achievement marks an important milestone in my academic journey, and I look forward to contributing to the knowledge exchange between China and New Zealand during my doctoral studies.`
+            },
+            {
+                date: '2025-06-17',
+                category: 'Scholarship',
+                title: 'Securing CSC Scholarship for Doctoral Studies at University of Auckland',
+                image: 'images/news/CSCScholarship.jpg',
+                content: `I am delighted to announce that I have been awarded the prestigious joint scholarship from the **China Scholarship Council (CSC)** and **the University of Auckland** in New Zealand to pursue my doctoral degree. This scholarship represents a significant opportunity for academic advancement and international collaboration.
+
+Under the scholarship's terms, my doctoral studies at the University of Auckland will be comprehensively supported. The University of Auckland will provide **full tuition coverage** for up to 48 months, while CSC will offer **a round-trip international airfare** and **a monthly living allowance** throughout the funding period, enabling me to focus entirely on my research and studies.
+
+The University of Auckland is New Zealand's leading higher education institution, consistently recognized for its academic excellence and research impact. It holds the **65th** position in the **2025 QS World University Rankings**, maintaining its status as the top-ranked university in New Zealand.
+
+This achievement marks an important milestone in my academic journey, and I look forward to contributing to the knowledge exchange between China and New Zealand during my doctoral studies.`
             }
-        });
-        
-        frontmatter.content = match[2].trim();
-        return frontmatter;
-    }
-
-    // 加载所有新闻文件
-    async loadNews() {
-        const newsFiles = [
-            'news/2025-06-17-Scholarship.md',
+            // 可以在这里添加更多新闻项目
         ];
+    }
 
-        for (const file of newsFiles) {
-            try {
-                const response = await fetch(file);
-                const content = await response.text();
-                const newsData = this.parseFrontmatter(content);
-                
-                if (newsData) {
-                    this.newsItems.push(newsData);
-                }
-            } catch (error) {
-                console.error(`Error loading ${file}:`, error);
-            }
-        }
-
+    // 加载新闻数据（现在是同步的）
+    loadNews() {
         // 按日期倒序排列
         this.newsItems.sort((a, b) => new Date(b.date) - new Date(a.date));
     }
@@ -110,8 +98,8 @@ class NewsManager {
     }
 
     // 初始化
-    async init() {
-        await this.loadNews();
+    init() {
+        this.loadNews();
         this.renderNews();
     }
 }
