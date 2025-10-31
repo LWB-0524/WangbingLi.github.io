@@ -40,7 +40,13 @@ jobs:
         # 删除缓存文件以强制获取新数据
         rm -f scholar_cache.json
         python scholar.py
+        echo "=== API目录下的scholar_data.json内容 ==="
+        cat scholar_data.json
         cp scholar_data.json ../scholar_data.json
+        cd ..
+        echo "=== 根目录下的scholar_data.json内容 ==="
+        cat scholar_data.json
+        echo "=== 文件复制完成 ==="
     
     - name: Check for changes
       id: verify-changed-files
@@ -56,8 +62,15 @@ jobs:
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        git add scholar_data.json
+        echo "=== Git状态检查 ==="
+        git status
+        echo "=== 添加文件到Git ==="
+        # 添加两个文件：api目录下的和根目录下的
+        git add api/scholar_data.json scholar_data.json
+        echo "=== 检查暂存区 ==="
+        git status --staged
         git commit -m "Auto-update Google Scholar data - $(date '+%Y-%m-%d %H:%M:%S')"
+        echo "=== 推送到远程仓库 ==="
         git push origin main
     
     - name: Deploy to GitHub Pages
