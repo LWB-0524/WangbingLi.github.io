@@ -1,0 +1,40 @@
+name: Update Google Scholar Data
+
+on:
+  schedule:
+    # 每天UTC时间18:00运行 (北京时间凌晨2:00)
+    - cron: '0 18 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  update-scholar:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        pip install requests
+        
+    - name: Update Scholar Data
+      run: |
+        cd api
+        python scholar.py
+        cp scholar_data.json ../scholar_data.json
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add scholar_data.json api/scholar_cache.json api/scholar_data.json
+        git diff --staged --quiet || git commit -m "Auto-update Google Scholar data $(date)"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
