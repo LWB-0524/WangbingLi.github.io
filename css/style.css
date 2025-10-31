@@ -249,6 +249,7 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 0.75rem;
     color: #9ca3af;
     text-align: center;
+    white-space: pre-line;
 }
 
 .scholar-link {
