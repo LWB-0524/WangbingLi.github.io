@@ -63,7 +63,7 @@ function loadScholarData() {
                     hour: '2-digit',
                     minute: '2-digit'
                 };
-                lastUpdatedEl.textContent = `Last updated (Beijing Time): ${updateDate.toLocaleDateString('en-CA', options).replace(',', '')}`;
+                lastUpdatedEl.textContent = `Last updated (Beijing Time):\n ${updateDate.toLocaleDateString('en-CA', options).replace(',', '')}`;
             }
         })
         .catch(error => {
