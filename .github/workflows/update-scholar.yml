@@ -37,6 +37,8 @@ jobs:
         SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
       run: |
         cd api
+        # 删除缓存文件以强制获取新数据
+        rm -f scholar_cache.json
         python scholar.py
         cp scholar_data.json ../scholar_data.json
     
