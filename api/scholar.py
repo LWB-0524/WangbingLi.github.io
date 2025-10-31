@@ -8,7 +8,7 @@ Fetch Google Scholar citation data using SerpAPI and cache it
 import json
 import os
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import requests
 
 # Configuration
@@ -57,7 +57,7 @@ def fetch_scholar_data():
             "citations_all": citations_all,
             "h_index_all": h_index_all,
             "i10_index_all": i10_index_all,
-            "last_updated": datetime.now().isoformat(),
+            "last_updated": datetime.now(timezone(timedelta(hours=8))).isoformat(),
             "profile_url": f"https://scholar.google.com/citations?user={AUTHOR_ID}"
         }
         
