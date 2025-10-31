@@ -2,9 +2,9 @@ name: Update Google Scholar Data
 
 on:
   schedule:
-    # 每天北京时间上午9点运行 (UTC时间凌晨1点)
+    # Run daily at 9 AM Beijing time (1 AM UTC)
     - cron: '0 1 * * *'
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch: # Allow manual trigger
 
 permissions:
   contents: write
@@ -37,16 +37,9 @@ jobs:
         SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
       run: |
         cd api
-        # Delete cache file to force fresh data fetch
         rm -f scholar_cache.json
         python scholar.py
-        echo "=== API directory scholar_data.json content ==="
-        cat scholar_data.json
         cp scholar_data.json ../scholar_data.json
-        cd ..
-        echo "=== Root directory scholar_data.json content ==="
-        cat scholar_data.json
-        echo "=== File copy completed ==="
     
     - name: Check for changes
       id: verify-changed-files
@@ -62,15 +55,8 @@ jobs:
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
-        echo "=== Git status check ==="
-        git status
-        echo "=== Adding files to Git ==="
-        # Add both files: api directory and root directory
         git add api/scholar_data.json scholar_data.json
-        echo "=== Check staging area ==="
-        git status --staged
         git commit -m "Auto-update Google Scholar data - $(date '+%Y-%m-%d %H:%M:%S')"
-        echo "=== Push to remote repository ==="
         git push origin main
     
     - name: Deploy to GitHub Pages
