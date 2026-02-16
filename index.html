@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wangbing Li - Personal Academic Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Wangbing Li<span class="chinese-name">（厉望秉）</span></h1>
+            <p class="subtitle">Civil Engineering (Smart Construction), The University of Auckland</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="awards.html">Awards</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="images/avatar.jpg" alt="Wangbing Li" class="avatar">
+                    
+                    <!-- 将简历下载按钮移到这里，头像下方 -->
+                    <div class="cv-download">
+                        <a href="files/CV.pdf" target="_blank" class="cv-button">
+                            <i class="fas fa-file-pdf"></i> Download My CV
+                        </a>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h2>About Me</h2>
+                    <p>I am Li Wangbing, and I will soon be a PhD student in the Department of Civil and Environmental Engineering at the University of Auckland.</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Address: No.100 Pingleyuan, Chaoyang District, Beijing, 100124</p>
+                        <p><i class="fas fa-phone"></i> Phone: (+86)18266995224</p>
+                        <p><i class="fas fa-envelope"></i> Email: 
+                            <a href="mailto:yizhangdabing@126.com">yizhangdabing@126.com</a>
+                        </p>
+                        
+                        
+                        <div class="academic-profiles">
+                            <a href="https://www.researchgate.net/profile/Wangbing-Li-2" target="_blank" class="profile-link">
+                                <i class="fas fa-globe"></i> ResearchGate
+                            </a>
+                            <span class="profile-divider">|</span>
+                            <a href="https://scholar.google.com/citations?user=mczdUnAAAAAJ&hl=zh-CN" target="_blank" class="profile-link">
+                                <i class="fas fa-graduation-cap"></i> Google Scholar
+                            </a>
+                            <span class="profile-divider">|</span>
+                            <a href="https://orcid.org/0000-0001-5690-3477" target="_blank" class="profile-link">
+                                <i class="fas fa-id-card"></i> ORCiD
+                            </a>
+                            <span class="profile-divider">|</span>
+                            <a href="https://www.linkedin.com/in/wangbing-li-521856332/" target="_blank" class="profile-link">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Google Scholar 侧边栏 -->
+                <aside class="sidebar" id="scholar-widget">
+                    <h3><i class="fas fa-graduation-cap"></i> Google Scholar</h3>
+                    <div class="scholar-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Citations</span>
+                            <span class="stat-value" id="citations-count">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">h-index</span>
+                            <span class="stat-value" id="h-index-count">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">i10-index</span>
+                            <span class="stat-value" id="i10-index-count">-</span>
+                        </div>
+                    </div>
+                    <p class="last-updated" id="last-updated">Loading...</p>
+                    <a href="https://scholar.google.com/citations?user=mczdUnAAAAAJ&hl=zh-CN" target="_blank" class="scholar-link">
+                        <i class="fas fa-external-link-alt"></i> View Profile
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- 将简历下载按钮移到这里，在灰色阴影模块之外 -->
+    <section class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="edu-content">
+                    <h3>PhD student in Civil Engineering (Smart Construction)</h3>
+                    <p class="institution">The University of Auckland, Auckland, New Zealand</p>
+                    <ul>
+                        <li>Advisor: Prof. Yang Zou</li>
+                        <li>Research Focus: BIM, UAV and Construction Informatics</li>
+                    </ul>
+                </div>
+                <div class="edu-date">Start date: 2026.02 (Expected)</div>
+            </div>
+            <div class="education-item">
+                <div class="edu-content">
+                    <h3>Master of Civil Engineering (Smart Construction)</h3>
+                    <p class="institution">Beijing University of Technology, Beijing, China</p>
+                    <ul>
+                        <li>GPA: 3.76/4.0</li>
+                        <li>Advisor: Assoc. Prof. Xuefeng Zhao</li>
+                        <li>Research Focus: Mixed Reality, BIM, Construction Informatics, and Ontology</li>
+                    </ul>
+                </div>
+                <div class="edu-date">2022.07 - 2025.11</div>
+            </div>
+            <div class="education-item">
+                <div class="edu-content">
+                    <h3>Bachelor of Civil Engineering</h3>
+                    <p class="institution">Beijing University of Technology, Beijing, China</p>
+                    <ul>
+                        <li>GPA: 3.92/4.0 (Rank: 3/155, Top 2%)</li>
+                        <li>Advisors: Assoc. Prof. Xuefeng Zhao and Assoc. Prof. Zhe Sun</li>
+                        <li>Graduated with Honors</li>
+                    </ul>
+                </div>
+                <div class="edu-date">2018.09 - 2022.07</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 只修改技能部分，其他部分保持不变 -->
+    <section class="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="software-icons">
+                        <div class="software-icon">
+                            <i class="fas fa-language"></i>
+                            <span>Chinese (Native)</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-globe"></i>
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Software</h3>
+                    <div class="software-icons">
+                        <div class="software-icon">
+                            <i class="fas fa-building"></i>
+                            <span>Revit</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-cubes"></i>
+                            <span>Navisworks</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-calculator"></i>
+                            <span>Abaqus</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>VOSviewer</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Visio</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Unity</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <span>MRTK</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-database"></i>
+                            <span>Apache Jena</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fas fa-brain"></i>
+                            <span>Protégé</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="software-icons">
+                        <div class="software-icon">
+                            <i class="fab fa-windows"></i>
+                            <span>C#</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="software-icon">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="academic-services">
+        <div class="container">
+            <h2>Academic Services</h2>
+            <ul>
+                <li>Student Member of American Society of Civil Engineers (ASCE)</li>
+                <li>Student Member of China Civil Engineering Society (CCES)</li>
+                <li>Student Volunteer for the 1st International Conference on Smart Construction (ICSC2024)</li>
+                <li>Student Volunteer for the 3rd China Conference on Intelligent Construction, Operation and Maintenance</li>
+                <li>Student Volunteer for the 1st China Forum on Intelligent Construction Discipline Development</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <!-- 访客地图 -->
+            <div class="visitor-map">
+                <h3><i class="fas fa-map-marked-alt"></i> Visitor Map</h3>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <script type="text/javascript" id="clustrmaps" src="https://clustrmaps.com/map_v2.js?d=qVZrTrnYbJcTy2mIU1OmL4jICrEBqHsi4UeuvH3uX14&cl=ffffff&w=a"></script>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px;">&copy; 2026 Wangbing Li. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
