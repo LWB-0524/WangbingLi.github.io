@@ -871,6 +871,16 @@ nav ul li a.active {
     color: var(--teal);
 }
 
+.visitor-map-widget {
+    max-width: 600px;
+    min-height: 86px;
+    margin: 0 auto;
+}
+
+.visitor-map-widget a {
+    font-weight: 700;
+}
+
 footer {
     margin-top: 46px;
     padding: 34px 0;
