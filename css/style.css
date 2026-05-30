@@ -873,12 +873,26 @@ nav ul li a.active {
 
 .visitor-map-widget {
     max-width: 600px;
-    min-height: 86px;
     margin: 0 auto;
 }
 
 .visitor-map-widget a {
     font-weight: 700;
+}
+
+.visitor-map-fallback {
+    max-width: 520px;
+    margin: 10px auto 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.visitor-map-widget:has(#clustrmaps + a),
+.visitor-map-widget:has(#clustrmaps + img),
+.visitor-map-widget:has(#clustrmaps + canvas),
+.visitor-map-widget:has(#clustrmaps + iframe) {
+    min-height: 0;
 }
 
 footer {
