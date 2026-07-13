@@ -123,7 +123,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
 
 **API配置:**
 ```python
-SERPAPI_KEY = "7eacbeb37f14223a652afdd95b65827a6086c73b33b6a6b26b1f36c3c244b831"
+SERPAPI_KEY = os.environ["SERPAPI_KEY"]  # Configure with GitHub Actions Secrets
 AUTHOR_ID = "mczdUnAAAAAJ"
 CACHE_DURATION = 24  # 小时
 ```

@@ -1,134 +1,124 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Google Scholar Citation Data Fetcher
-Fetch Google Scholar citation data using SerpAPI and cache it
-"""
+"""Fetch Google Scholar author metrics from SerpAPI for the static site."""
 
+from __future__ import annotations
+
+import argparse
 import json
 import os
-import time
-from datetime import datetime, timedelta, timezone
+import tempfile
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
 import requests
 
-# Configuration
-SERPAPI_KEY = os.environ.get("SERPAPI_KEY", "7eacbeb37f14223a652afdd95b65827a6086c73b33b6a6b26b1f36c3c244b831")
-AUTHOR_ID = "mczdUnAAAAAJ"
-CACHE_FILE = os.path.join(os.path.dirname(__file__), "scholar_cache.json")
-CACHE_DURATION = 24  # Cache for 24 hours
 
-def fetch_scholar_data():
-    """Fetch Google Scholar data from SerpAPI"""
-    url = "https://serpapi.com/search"
-    params = {
-        "engine": "google_scholar_author",
-        "author_id": AUTHOR_ID,
-        "api_key": SERPAPI_KEY,
-        "hl": "en"
+SERPAPI_ENDPOINT = "https://serpapi.com/search.json"
+DEFAULT_AUTHOR_ID = "mczdUnAAAAAJ"
+REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
+
+
+def extract_metrics(payload: dict[str, Any]) -> dict[str, int]:
+    """Extract all-time citation metrics without relying on table ordering."""
+    table = payload.get("cited_by", {}).get("table")
+    if not isinstance(table, list):
+        raise ValueError("SerpAPI response does not contain a cited_by table")
+
+    field_map = {
+        "citations": "citations_all",
+        "h_index": "h_index_all",
+        "i10_index": "i10_index_all",
     }
-    
-    try:
-        response = requests.get(url, params=params, timeout=10)
-        response.raise_for_status()
-        data = response.json()
-        
-        # Extract key data
-        author_info = data.get("author", {})
-        cited_by = data.get("cited_by", {})
-        table = cited_by.get("table", [])
-        
-        # Extract citations (first element)
-        citations_all = 0
-        if len(table) > 0 and "citations" in table[0]:
-            citations_all = table[0]["citations"].get("all", 0)
-        
-        # Extract h-index (second element)
-        h_index_all = 0
-        if len(table) > 1 and "h_index" in table[1]:
-            h_index_all = table[1]["h_index"].get("all", 0)
-        
-        # Extract i10-index (third element)
-        i10_index_all = 0
-        if len(table) > 2 and "i10_index" in table[2]:
-            i10_index_all = table[2]["i10_index"].get("all", 0)
-        
-        scholar_data = {
-            "name": author_info.get("name", ""),
-            "citations_all": citations_all,
-            "h_index_all": h_index_all,
-            "i10_index_all": i10_index_all,
-            "last_updated": datetime.now(timezone(timedelta(hours=8))).isoformat(),
-            "profile_url": f"https://scholar.google.com/citations?user={AUTHOR_ID}"
-        }
-        
-        return scholar_data
-    except Exception as e:
-        print(f"Error fetching scholar data: {e}")
-        return None
+    metrics: dict[str, int] = {}
 
-def load_cache():
-    """Load cached data"""
-    if not os.path.exists(CACHE_FILE):
-        return None
-    
-    try:
-        with open(CACHE_FILE, 'r', encoding='utf-8') as f:
-            cache = json.load(f)
-            
-        # Check if cache is expired
-        last_updated = datetime.fromisoformat(cache.get("last_updated", ""))
-        if datetime.now() - last_updated < timedelta(hours=CACHE_DURATION):
-            return cache
-        else:
-            return None
-    except Exception as e:
-        print(f"Error loading cache: {e}")
-        return None
+    for row in table:
+        if not isinstance(row, dict):
+            continue
+        for source_key, output_key in field_map.items():
+            value = row.get(source_key)
+            if isinstance(value, dict) and isinstance(value.get("all"), int):
+                metrics[output_key] = value["all"]
 
-def save_cache(data):
-    """Save data to cache"""
-    try:
-        with open(CACHE_FILE, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        return True
-    except Exception as e:
-        print(f"Error saving cache: {e}")
-        return False
+    missing = set(field_map.values()) - set(metrics)
+    if missing:
+        raise ValueError(f"SerpAPI response is missing metrics: {', '.join(sorted(missing))}")
 
-def get_scholar_data():
-    """Get Scholar data (prioritize cache)"""
-    # Try to load from cache first
-    cached_data = load_cache()
-    if cached_data:
-        print("Using cached data")
-        return cached_data
-    
-    # Cache doesn't exist or expired, fetch from API
-    print("Fetching fresh data from SerpAPI")
-    fresh_data = fetch_scholar_data()
-    
-    if fresh_data:
-        save_cache(fresh_data)
-        return fresh_data
-    else:
-        # API failed, try to return expired cache
-        if os.path.exists(CACHE_FILE):
-            with open(CACHE_FILE, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        return None
+    return metrics
 
-def generate_json_file():
-    """Generate JSON file for frontend use"""
-    data = get_scholar_data()
-    if data:
-        output_file = os.path.join(os.path.dirname(__file__), "scholar_data.json")
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-        print(f"Scholar data saved to {output_file}")
-        return True
-    else:
-        print("Failed to generate scholar data")
-        return False
+
+def fetch_scholar_data(
+    api_key: str,
+    author_id: str = DEFAULT_AUTHOR_ID,
+    session: Any = requests,
+) -> dict[str, Any]:
+    """Fetch and validate one author profile from SerpAPI."""
+    response = session.get(
+        SERPAPI_ENDPOINT,
+        params={
+            "engine": "google_scholar_author",
+            "author_id": author_id,
+            "api_key": api_key,
+            "hl": "en",
+        },
+        timeout=(5, 20),
+    )
+
+    if response.status_code != 200:
+        raise RuntimeError(f"SerpAPI request failed with HTTP {response.status_code}")
+
+    payload = response.json()
+    if payload.get("error"):
+        raise RuntimeError(f"SerpAPI returned an error: {str(payload['error'])[:200]}")
+
+    metrics = extract_metrics(payload)
+    return {
+        "name": payload.get("author", {}).get("name", "Wangbing Li"),
+        **metrics,
+        "last_updated": datetime.now(timezone.utc).isoformat(),
+        "profile_url": f"https://scholar.google.com/citations?user={author_id}",
+        "source": "SerpAPI / Google Scholar",
+    }
+
+
+def write_json_atomic(data: dict[str, Any], output_path: Path) -> None:
+    """Write a complete JSON snapshot without exposing a partial file."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        "w",
+        encoding="utf-8",
+        dir=output_path.parent,
+        delete=False,
+        suffix=".tmp",
+    ) as temp_file:
+        json.dump(data, temp_file, ensure_ascii=False, indent=2)
+        temp_file.write("\n")
+        temp_path = Path(temp_file.name)
+    temp_path.replace(output_path)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=REPOSITORY_ROOT / "scholar_data.json",
+        help="Path to the generated frontend JSON file",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    api_key = os.environ.get("SERPAPI_KEY", "").strip()
+    if not api_key:
+        raise SystemExit("SERPAPI_KEY is required; configure it as a GitHub Actions secret")
+
+    data = fetch_scholar_data(api_key)
+    write_json_atomic(data, args.output)
+    print(f"Scholar data written to {args.output}")
+    return 0
+
 
 if __name__ == "__main__":
-    generate_json_file()
+    raise SystemExit(main())

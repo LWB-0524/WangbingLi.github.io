@@ -26,8 +26,13 @@ function loadScholarData() {
     const scholarWidget = document.getElementById('scholar-widget');
     if (!scholarWidget) return;
 
-    fetch('scholar_data.json')
-        .then(response => response.json())
+    fetch(`scholar_data.json?updated=${Date.now()}`, { cache: 'no-store' })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Scholar data request failed with HTTP ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             const citationsEl = document.getElementById('citations-count');
             if (citationsEl) {
@@ -52,9 +57,11 @@ function loadScholarData() {
                     month: '2-digit',
                     day: '2-digit',
                     hour: '2-digit',
-                    minute: '2-digit'
+                    minute: '2-digit',
+                    hour12: false,
+                    timeZone: 'Asia/Shanghai'
                 };
-                lastUpdatedEl.textContent = `Last updated (Beijing Time):\n ${updateDate.toLocaleDateString('en-CA', options).replace(',', '')}`;
+                lastUpdatedEl.textContent = `Last updated (Beijing Time):\n ${new Intl.DateTimeFormat('en-CA', options).format(updateDate)}`;
             }
         })
         .catch(error => {

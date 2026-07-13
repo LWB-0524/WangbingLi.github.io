@@ -106,7 +106,7 @@ jobs:
 ### 更改API Key(如果需要)
 编辑`api/scholar.py`,第13行:
 ```python
-SERPAPI_KEY = "your-new-api-key"
+SERPAPI_KEY = os.environ["SERPAPI_KEY"]
 ```
 
 ### 手动更新Scholar数据
