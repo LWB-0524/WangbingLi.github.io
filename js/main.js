@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPage = window.location.pathname.split('/').pop();
 
     document.querySelectorAll('nav ul li a').forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
+        const linkPage = new URL(link.href, window.location.href).pathname.split('/').pop();
+        if (linkPage === currentPage) {
             link.classList.add('active');
-        } else if (currentPage === '' && link.getAttribute('href') === 'index.html') {
+        } else if (currentPage === '' && linkPage === 'index.html') {
             link.classList.add('active');
         }
     });
