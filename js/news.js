@@ -73,12 +73,22 @@ This achievement marks an important milestone in my academic journey, and I look
             newsCard.innerHTML = `
                 ${imageHTML}
                 <div class="news-content">
-                    <div class="news-category">${item.category}</div>
+                    <div class="news-meta">
+                        <div class="news-category">${item.category}</div>
+                        <div class="news-date">${this.formatDate(item.date)}</div>
+                    </div>
                     <h3 class="news-title">${item.title}</h3>
                     <p class="news-excerpt">${this.markdownToHtml(item.content)}</p>
-                    <div class="news-date">${this.formatDate(item.date)}</div>
+                    <button class="news-toggle" type="button" aria-expanded="false">Read more</button>
                 </div>
             `;
+
+            const toggleButton = newsCard.querySelector('.news-toggle');
+            toggleButton.addEventListener('click', () => {
+                const isExpanded = newsCard.classList.toggle('is-expanded');
+                toggleButton.setAttribute('aria-expanded', String(isExpanded));
+                toggleButton.textContent = isExpanded ? 'Show less' : 'Read more';
+            });
 
             newsContainer.appendChild(newsCard);
         });
